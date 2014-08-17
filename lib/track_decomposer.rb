@@ -1,5 +1,5 @@
 require "track_decomposer/version"
 
 module TrackDecomposer
-  # Your code goes here...
+  require "track_decomposer/decomposer"
 end
