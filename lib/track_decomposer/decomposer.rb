@@ -3,25 +3,27 @@ module TrackDecomposer
 
     attr_reader :artists, :name, :remixer
 
-    def initialize(track)
-      @raw = track
-    end
-
     def self.do(track)
       self.new(track).decompose
     end
 
-    def decompose
-      if @raw.include?("-")
-        parts = @raw.split("-")
+    def initialize(track)
+      @raw = RawTrack.new(track)
+    end
 
-        @artists = decompose_artists(parts[0].strip)
-        @name, @remixer = decompose_trackname(parts[1].strip)
+    def decompose
+      if @raw.has_artist_and_trackname?
+        artists_part, trackname_part  = @raw.split_artists_and_trackname
+
+        @artists = decompose_artists(artists_part)
+        @name, @remixer = decompose_trackname(trackname_part)
       else
         raise UndecomposableTrack.new("Don't know how to decompose a track without \"-\". Track was:#{@raw}")
       end
       self
     end
+
+     private
 
     def decompose_artists(artist_part)
       [artist_part]
