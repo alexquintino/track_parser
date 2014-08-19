@@ -32,17 +32,12 @@ module TrackDecomposer
     def decompose_trackname(trackname_part)
       if trackname_part.has_remix?
         name, remix_part = trackname_part.split_trackname_and_remix
-        remixer = decompose_remix(remix_part)
-        return name, remixer
+        return name, Remix.new(remix_part).remixer
       else
         trackname_part.to_s
       end
     end
 
-    def decompose_remix(remix_part)
-      remixer = /(?<remixer>.+)\b(remix|mix)/i.match(remix_part)[:remixer]
-      remixer.strip
-    end
   end
 
   class UndecomposableTrack < StandardError; end 
