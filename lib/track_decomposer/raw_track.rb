@@ -5,14 +5,28 @@ module TrackDecomposer
       @raw = track
     end
 
+    def valid?
+      has_artist_and_trackname?
+    end
+
     def has_artist_and_trackname?
       @raw.include?("-")
     end
 
-    def split_artists_and_trackname
-      parts = @raw.split("-")
-      return parts[0].strip, parts[1].strip
+    def artists
+      track_parts[0]
     end
 
+    def trackname
+      track_parts[1]
+    end
+
+    def track_parts
+      @parts ||= @raw.split("-").map(&:strip)
+    end
+
+    def to_s
+      @raw
+    end
   end
 end

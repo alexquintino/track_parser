@@ -2,23 +2,30 @@ module TrackDecomposer
 
   class Trackname
 
-    def initialize(name_part)
-      @raw = name_part      
+    def initialize(trackname_part)
+      @raw = trackname_part      
     end
 
     def has_remix?
       !!/\(.+\)/.match(@raw)
     end
 
-    def split_trackname_and_remix
-      match = /(?<name>.*)\((?<remix>.+)\)/.match(@raw)
-      return match[:name].strip, match[:remix].strip
+    def name
+      parts[:name].strip
     end
 
-    def to_s
-      @raw
+    def remix
+      parts[:remix].strip
     end
 
-  end
+    def parts
+      if has_remix?
+        @parts ||= /(?<name>.*)\((?<remix>.+)\)/.match(@raw)
+      else
+        @parts ||= { name: @raw }
+      end
+    end
+
+ end
 
 end
