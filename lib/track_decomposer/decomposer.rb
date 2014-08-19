@@ -16,7 +16,7 @@ module TrackDecomposer
         artists_part, trackname_part  = @raw.split_artists_and_trackname
 
         @artists = decompose_artists(artists_part)
-        @name, @remixer = decompose_trackname(trackname_part)
+        @name, @remixer = decompose_trackname(Trackname.new(trackname_part))
       else
         raise UndecomposableTrack.new("Don't know how to decompose a track without \"-\". Track was:#{@raw}")
       end
@@ -30,13 +30,12 @@ module TrackDecomposer
     end
 
     def decompose_trackname(trackname_part)
-      if /\(.+\)/.match trackname_part
-        match = /(?<name>.*)\((?<remix>.+)\)/.match(trackname_part)
-        name = match[:name].strip
-        remixer = decompose_remix(match[:remix])
+      if trackname_part.has_remix?
+        name, remix_part = trackname_part.split_trackname_and_remix
+        remixer = decompose_remix(remix_part)
         return name, remixer
       else
-        trackname_part.strip
+        trackname_part.to_s
       end
     end
 
