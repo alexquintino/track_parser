@@ -3,6 +3,7 @@ require "track_decomposer/decomposer"
 require "track_decomposer/raw_track"
 require "track_decomposer/trackname"
 require "track_decomposer/remix"
+require "track_decomposer/artists"
 
 module TrackDecomposer
 end

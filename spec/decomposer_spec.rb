@@ -2,7 +2,8 @@ describe TrackDecomposer::Decomposer do
   
   tracks = {
     "SIS - Orgsa" => { artists: ["SIS"], name: "Orgsa", remixer: nil },
-    "Roy Davis Jr - About Love (Pezzner Remix)" => { artists: ["Roy Davis Jr"], name: "About Love", remixer: "Pezzner" }
+    "Roy Davis Jr - About Love (Pezzner Remix)" => { artists: ["Roy Davis Jr"], name: "About Love", remixer: "Pezzner" },
+    "Julien Perez & Octavio Camino - Parada Maya" => { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya", remixer: nil }
   }
 
   let(:decomposed_track) { TrackDecomposer::Decomposer.do(track) }
