@@ -18,7 +18,7 @@ module TrackDecomposer
     end
 
     def trackname
-      track_parts[1]
+      track_parts[1..-1].reduce(:+)
     end
 
     def track_parts

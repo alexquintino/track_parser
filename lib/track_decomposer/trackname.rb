@@ -18,12 +18,22 @@ module TrackDecomposer
       parts[:remix].strip
     end
 
+    def separate_name_and_remix?
+      @raw.include?("-")
+    end
+
     def parts
-      if has_remix?
-        @parts ||= /(?<name>.*)\((?<remix>.+)\)/.match(@raw)
-      else
-        @parts ||= { name: @raw }
-      end
+      @parts ||=
+        if separate_name_and_remix?
+          parts = @raw.split("-").map(&:strip)
+          {name: parts[0], remix: parts[1]}
+        else
+          if has_remix?
+            /(?<name>.*)\((?<remix>.+)\)/.match(@raw)
+          else
+            { name: @raw }
+          end
+        end
     end
 
  end
