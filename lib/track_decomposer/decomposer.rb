@@ -14,21 +14,12 @@ module TrackDecomposer
     def decompose
       if @raw_track.valid?
         @artists = Artists.new(@raw_track.artists).artists
-        @name, @remixer = decompose_trackname(Trackname.new(@raw_track.trackname))
+        @name = @raw_track.trackname
+        @remixer = Remix.new(@raw_track.remix).remixer
       else
         raise UndecomposableTrack.new("Don't know how to decompose a track without \"-\". Track was:#{@raw_track.to_s}")
       end
       self
-    end
-
-    private
-
-    def decompose_trackname(trackname_part)
-      if trackname_part.has_remix?
-        return trackname_part.name, Remix.new(trackname_part.remix).remixer
-      else
-        trackname_part.name
-      end
     end
 
   end

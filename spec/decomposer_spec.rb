@@ -1,10 +1,16 @@
 describe TrackDecomposer::Decomposer do
   
   tracks = {
-    "SIS - Orgsa" => { artists: ["SIS"], name: "Orgsa", remixer: nil },
-    "Roy Davis Jr - About Love (Pezzner Remix)" => { artists: ["Roy Davis Jr"], name: "About Love", remixer: "Pezzner" },
-    "Julien Perez & Octavio Camino - Parada Maya" => { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya", remixer: nil },
-    "Kollektiv Turmstrasse - Ordinary - (Lake People's Circle Motive Remix) " => { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: "Lake People" }
+    "SIS - Orgsa" => 
+      { artists: ["SIS"], name: "Orgsa", remixer: nil },
+    "Roy Davis Jr - About Love (Pezzner Remix)" => 
+      { artists: ["Roy Davis Jr"], name: "About Love", remixer: "Pezzner" },
+    "Julien Perez & Octavio Camino - Parada Maya" => 
+      { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya", remixer: nil },
+    "Kollektiv Turmstrasse - Ordinary - (Lake People's Circle Motive Remix)" => 
+      { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: "Lake People" },
+    "Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub" => 
+      { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: "Hreno"}
   }
 
   let(:decomposed_track) { TrackDecomposer::Decomposer.do(track) }
