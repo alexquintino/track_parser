@@ -1,17 +1,13 @@
 require_relative "remix"
 
 module TrackDecomposer
-  class RawTrack
+  class Track
 
     def initialize(track)
       @raw = track
     end
 
-    def valid?
-      has_artist_and_trackname?
-    end
-
-    def has_artist_and_trackname?
+    def decomposable?
       @raw.include?("-")
     end
 
@@ -26,6 +22,12 @@ module TrackDecomposer
     def remix
       data[:remix]
     end
+
+    def to_s
+      @raw
+    end
+
+    private
 
     def parts
       @parts ||= @raw.split("-").map(&:strip)
@@ -50,10 +52,6 @@ module TrackDecomposer
 
     def trackname_parts
       @trackname_parts ||= /(?<name>.*)\((?<remix>.+)\)/.match(parts[1])
-    end
-
-    def to_s
-      @raw
     end
   end
 end

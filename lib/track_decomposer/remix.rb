@@ -1,4 +1,3 @@
-require "pry"
 module TrackDecomposer
 
   class Remix
@@ -7,13 +6,10 @@ module TrackDecomposer
     VERSIONS_REGEXP = VERSIONS.join("|")
 
     def initialize(remix_part)
-      if !remix_part.nil?
-        @raw = remix_part.gsub(/(\(|\))/, "")
+      @raw = remix_part
+      if !@raw.nil?
+        @raw.gsub!(/(\(|\))/, "")
       end
-    end
-
-    def has_remix_name?
-      @raw.include?("'s")
     end
 
     def remixer
@@ -22,6 +18,12 @@ module TrackDecomposer
 
     def remix_name
       parts[:remix_name].strip unless @raw.nil?
+    end
+
+    private 
+
+    def has_remix_name?
+      @raw.include?("'s")
     end
 
     def parts

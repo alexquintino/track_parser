@@ -1,25 +1,24 @@
 module TrackDecomposer
   class Decomposer
 
-    attr_reader :artists, :name, :remixer
 
     def self.do(track)
       self.new(track).decompose
     end
 
     def initialize(track)
-      @raw_track = RawTrack.new(track)
+      @track = Track.new(track)
     end
 
     def decompose
-      if @raw_track.valid?
-        @artists = Artists.new(@raw_track.artists).artists
-        @name = @raw_track.trackname
-        @remixer = Remix.new(@raw_track.remix).remixer
+      if @track.decomposable?
+        @artists = Artists.new(@track.artists)
+        @name = @track.trackname
+        @remix = Remix.new(@track.remix)
       else
-        raise UndecomposableTrack.new("Don't know how to decompose a track without \"-\". Track was:#{@raw_track.to_s}")
+        raise UndecomposableTrack.new("Don't know how to decompose a track without \"-\". Track was:#{@track.to_s}")
       end
-      self
+      {artists: @artists.to_a, name: @name.to_s, remixer: @remix.remixer}
     end
 
   end

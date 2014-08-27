@@ -20,15 +20,15 @@ describe TrackDecomposer::Decomposer do
       let(:track) { track }
 
       it "returns the artist correctly" do
-        expect(decomposed_track.artists).to eq(tracks[track][:artists])
+        expect(decomposed_track[:artists]).to eq(tracks[track][:artists])
       end
 
       it "returns the track name correctly" do
-        expect(decomposed_track.name).to eq(tracks[track][:name])
+        expect(decomposed_track[:name]).to eq(tracks[track][:name])
       end
 
       it "returns the remixer correctly" do
-        expect(decomposed_track.remixer).to eq(tracks[track][:remixer])
+        expect(decomposed_track[:remixer]).to eq(tracks[track][:remixer])
       end
     end
   end
