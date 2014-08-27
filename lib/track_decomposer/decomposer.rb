@@ -14,11 +14,15 @@ module TrackDecomposer
       if @track.decomposable?
         @artists = Artists.new(@track.artists)
         @name = @track.trackname
-        @remix = Remix.new(@track.remix)
+        if @track.has_remix?
+          @remix = Remix.new(@track.remix)
+        else 
+          @remix = NullRemix
+        end
       else
         raise UndecomposableTrack.new("Don't know how to decompose a track without \"-\". Track was:#{@track.to_s}")
       end
-      {artists: @artists.to_a, name: @name.to_s, remixer: @remix.remixer}
+      {artists: @artists.to_a, name: @name.to_s, remixer: @remix.remixer, remix_name: @remix.remix_name}
     end
 
   end

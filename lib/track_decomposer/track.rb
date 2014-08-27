@@ -27,6 +27,10 @@ module TrackDecomposer
       @raw
     end
 
+    def has_remix?
+      parts.size == 3 || !!/\(.*(#{Remix::VERSIONS_REGEXP})+\)/.match(parts[1])
+    end
+
     private
 
     def parts
@@ -44,10 +48,6 @@ module TrackDecomposer
         else
           { artists: parts[0], name: parts[1], remix: parts[2] }
         end
-    end
-
-    def has_remix?
-      !!/\(.*(#{Remix::VERSIONS_REGEXP})+\)/.match(parts[1])
     end
 
     def trackname_parts
