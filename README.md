@@ -20,7 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "track_decomposer"
+TrackDecomposer::Decomposer.do("Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub")
+=> {:artists=>["Derek Marin"], :name=>"We've Been Expecting You", :remixer=>"Hreno", :remix_name=>"Deep Pockets Dub"}
+```
+
+## Non-exhaustive list of formats supported
+
+* `<artist> - <track name>`
+* `<artist> - <track name> [-] (<remixer> Remix|Vocal|Dub|Mix)`
+* `<artist> - <track name> (<remixer>'s <remix name>)`
+* `<artist> & <artist> - <track name>`
 
 ## Contributing
 
