@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'track_decomposer/version'
+require 'track_parser/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "track_decomposer"
-  spec.version       = TrackDecomposer::VERSION
+  spec.name          = "track_parser"
+  spec.version       = TrackParser::VERSION
   spec.authors       = ["Alexandre Quintino"]
   spec.email         = ["amsquintino@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
+  spec.add_runtime_dependency "ast"
 end

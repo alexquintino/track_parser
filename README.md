@@ -1,4 +1,4 @@
-# TrackDecomposer
+# TrackParser
 
 TODO: Write a gem description
 
@@ -7,7 +7,7 @@ TODO: Write a gem description
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'track_decomposer'
+gem 'track_parser'
 ```
 
 And then execute:
@@ -16,14 +16,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install track_decomposer
+    $ gem install track_parser
 
 ## Usage
 
 ```ruby
-require "track_decomposer"
-TrackDecomposer::Decomposer.do("Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub")
-=> {:artists=>["Derek Marin"], :name=>"We've Been Expecting You", :remixer=>"Hreno", :remix_name=>"Deep Pockets Dub"}
+require "track_parser"
+TrackParser::Parser.do("Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub")
+=> {:artists=>["Derek Marin"], :track_name=>"We've Been Expecting You", :remixer=>"Hreno", :remix_name=>"Deep Pockets Dub"}
 ```
 
 ## Non-exhaustive list of formats supported
@@ -35,7 +35,7 @@ TrackDecomposer::Decomposer.do("Derek Marin - We've Been Expecting You - Hreno's
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/track_decomposer/fork )
+1. Fork it ( https://github.com/[my-github-username]/track_parser/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
