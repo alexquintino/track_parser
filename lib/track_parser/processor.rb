@@ -29,7 +29,7 @@ module TrackParser
 
     def on_remix(node)
       hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
-      { remixer: hash[:artist], remix_name: hash[:name] }
+      { remixer: hash[:artists], remix_name: hash[:name] }
     end
   end
 end

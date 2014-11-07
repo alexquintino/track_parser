@@ -18,9 +18,9 @@ module TrackParser
       else
         if has_remix_name?
           nodes = @raw.split("'s")
-          [ArtistNode.new(nodes[0]), NameNode.new(remix_name(nodes[1]))]
+          [ArtistsNode.new(nodes[0]), NameNode.new(remix_name(nodes[1]))]
         else
-          [ArtistNode.new(remixer)]
+          [ArtistsNode.new(remixer)]
         end
       end
     end

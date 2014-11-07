@@ -2,17 +2,19 @@ describe TrackParser::Parser do
 
   tracks = {
     "SIS - Orgsa" =>
-      { artists: ["SIS"], name: "Orgsa", remixer: nil, remix_name: nil },
+      { artists: ["SIS"], name: "Orgsa" },
     "Roy Davis Jr - About Love (Pezzner Remix)" =>
-      { artists: ["Roy Davis Jr"], name: "About Love", remixer: "Pezzner", remix_name: nil },
+      { artists: ["Roy Davis Jr"], name: "About Love", remixer: ["Pezzner"] },
     "Julien Perez & Octavio Camino - Parada Maya" =>
-      { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya", remixer: nil, remix_name: nil },
+      { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya" },
     "Kollektiv Turmstrasse - Ordinary (Lake People's Circle Motive Remix)" =>
-      { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: "Lake People", remix_name: "Circle Motive Remix" },
+      { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: ["Lake People"], remix_name: "Circle Motive Remix" },
     "Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub" =>
-      { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: "Hreno", remix_name: "Deep Pockets Dub" },
+      { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: ["Hreno"], remix_name: "Deep Pockets Dub" },
      "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
-     { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines" }
+     { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines" },
+     "Noir & Fraser Owen - &U - Mendo & Danny Serrano Remix" =>
+     { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"]}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
