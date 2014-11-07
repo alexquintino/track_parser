@@ -5,7 +5,7 @@ require_relative 'name_node'
 module TrackParser
   class RemixNode < AST::Node
 
-    VERSIONS_REGEXP = ["remix", "mix", "vocal", "dub"].join("|")
+    VERSIONS_REGEXP = ["remix", "mix", "vocal", "dub", "rework", "edit"].join("|")
 
     def initialize(remix)
       raw = remix.gsub(/(\(|\))/, "") # remove parantheses

@@ -14,7 +14,11 @@ describe TrackParser::Parser do
      "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
      { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines" },
      "Noir & Fraser Owen - &U - Mendo & Danny Serrano Remix" =>
-     { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"]}
+     { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"]},
+     "Plastikman - Spastik - Dubfire Rework" =>
+     { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"] },
+     "Alex Under - El Encuentro - Richie Hawtin Edit" =>
+     { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"] }
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
