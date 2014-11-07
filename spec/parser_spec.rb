@@ -10,7 +10,9 @@ describe TrackParser::Parser do
     "Kollektiv Turmstrasse - Ordinary (Lake People's Circle Motive Remix)" =>
       { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: "Lake People", remix_name: "Circle Motive Remix" },
     "Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub" =>
-      { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: "Hreno", remix_name: "Deep Pockets Dub" }
+      { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: "Hreno", remix_name: "Deep Pockets Dub" },
+     "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
+     { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines" }
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
