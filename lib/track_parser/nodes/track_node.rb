@@ -7,6 +7,7 @@ module TrackParser
   class TrackNode < AST::Node
 
     def initialize(track)
+      raw = track.gsub("[","(").gsub("]",")")
       super(:track, [], {raw: track})
     end
 

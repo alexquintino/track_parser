@@ -4,7 +4,9 @@ module TrackParser
   class Processor < AST::Processor
 
     def on_track(node)
-      process_all(node).reduce({}) { |mem, h| mem.merge(h) }
+      hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
+      hash[:artists] << hash[:featuring] if hash[:featuring] #merge featuring with artists
+      hash
     end
 
     def on_trackname(node)
@@ -30,6 +32,11 @@ module TrackParser
     def on_remix(node)
       hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
       { remixer: hash[:artists], remix_name: hash[:name] }
+    end
+
+    def on_featuring(node)
+      artist = process_all(node).first
+      { featuring: artist[:artist] }
     end
   end
 end

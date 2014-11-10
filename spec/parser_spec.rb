@@ -18,7 +18,9 @@ describe TrackParser::Parser do
      "Plastikman - Spastik - Dubfire Rework" =>
      { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"] },
      "Alex Under - El Encuentro - Richie Hawtin Edit" =>
-     { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"] }
+     { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"] },
+     "Gorge - Erotic Soul feat. The Writers Poet - Original Mix" =>
+     { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul"}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
