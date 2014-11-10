@@ -20,7 +20,9 @@ describe TrackParser::Parser do
      "Alex Under - El Encuentro - Richie Hawtin Edit" =>
      { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"] },
      "Gorge - Erotic Soul feat. The Writers Poet - Original Mix" =>
-     { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul"}
+     { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul"},
+     "John Talabot & Pional - Destiny feat. Pional" =>
+     { artists: ["John Talabot", "Pional"], name: "Destiny"}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
