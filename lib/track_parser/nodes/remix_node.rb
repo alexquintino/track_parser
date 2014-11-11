@@ -14,13 +14,13 @@ module TrackParser
 
     def children
       if original_mix?
-        []
+        [NameNode.new(@raw)]
       else
         if has_remix_name?
           nodes = @raw.split("'s")
           [ArtistsNode.new(nodes[0]), NameNode.new(remix_name(nodes[1]))]
         else
-          [ArtistsNode.new(remixer)]
+          [ArtistsNode.new(remixer), NameNode.new(remix_version)]
         end
       end
     end
@@ -35,6 +35,10 @@ module TrackParser
 
     def remix_name(name_part)
       /(?<remix_name>.+\b(#{VERSIONS_REGEXP}))/i.match(name_part)[:remix_name].strip
+    end
+
+    def remix_version(remix = @raw)
+      remix.scan(/(#{VERSIONS_REGEXP})\b/i).flatten.join(" ")
     end
 
     def original_mix?(remix = @raw)

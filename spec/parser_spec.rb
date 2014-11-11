@@ -2,27 +2,27 @@ describe TrackParser::Parser do
 
   tracks = {
     "SIS - Orgsa" =>
-      { artists: ["SIS"], name: "Orgsa" },
+      { artists: ["SIS"], name: "Orgsa", remixer: nil, remix_name: nil},
     "Roy Davis Jr - About Love (Pezzner Remix)" =>
-      { artists: ["Roy Davis Jr"], name: "About Love", remixer: ["Pezzner"] },
+      { artists: ["Roy Davis Jr"], name: "About Love", remixer: ["Pezzner"], remix_name: "Remix" },
     "Julien Perez & Octavio Camino - Parada Maya" =>
-      { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya" },
+      { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya", remixer: nil, remix_name: nil},
     "Kollektiv Turmstrasse - Ordinary (Lake People's Circle Motive Remix)" =>
       { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: ["Lake People"], remix_name: "Circle Motive Remix" },
     "Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub" =>
       { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: ["Hreno"], remix_name: "Deep Pockets Dub" },
      "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
-     { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines" },
+     { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines", remixer: nil, remix_name: "Original Mix" },
      "Noir & Fraser Owen - &U - Mendo & Danny Serrano Remix" =>
-     { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"]},
+     { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"], remix_name: "Remix"},
      "Plastikman - Spastik - Dubfire Rework" =>
-     { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"] },
+     { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"], remix_name: "Rework" },
      "Alex Under - El Encuentro - Richie Hawtin Edit" =>
-     { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"] },
+     { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"], remix_name: "Edit" },
      "Gorge - Erotic Soul feat. The Writers Poet - Original Mix" =>
-     { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul"},
+     { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul", remixer: nil, remix_name: "Original Mix"},
      "John Talabot & Pional - Destiny feat. Pional" =>
-     { artists: ["John Talabot", "Pional"], name: "Destiny"}
+     { artists: ["John Talabot", "Pional"], name: "Destiny", remixer: nil, remix_name: nil}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
