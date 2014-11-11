@@ -9,11 +9,15 @@ module TrackParser
     end
 
     def children
-      if @raw.include?("&")
-        /(.*) &+ (.*)/.match(@raw).captures.map { |capture| ArtistNode.new(capture) }
+      if multiple?
+        /(.*) (?:and|&)+ (.*)/.match(@raw).captures.map { |capture| ArtistNode.new(capture) }
       else
         [ArtistNode.new(@raw)]
       end
+    end
+
+    def multiple?
+      !!/\s(?:and|&)\s/i.match(@raw)
     end
   end
 end

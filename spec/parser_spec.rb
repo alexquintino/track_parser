@@ -13,7 +13,7 @@ describe TrackParser::Parser do
       { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: ["Hreno"], remix_name: "Deep Pockets Dub" },
     "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
      { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines", remixer: nil, remix_name: "Original Mix" },
-    "Noir & Fraser Owen - &U - Mendo & Danny Serrano Remix" =>
+    "Noir & Fraser Owen - &U - Mendo and Danny Serrano Remix" =>
      { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"], remix_name: "Remix"},
     "Plastikman - Spastik - Dubfire Rework" =>
      { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"], remix_name: "Rework" },
