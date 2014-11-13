@@ -12,19 +12,21 @@ describe TrackParser::Parser do
     "Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub" =>
       { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: ["Hreno"], remix_name: "Deep Pockets Dub" },
     "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
-     { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines", remixer: nil, remix_name: "Original Mix" },
+      { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines", remixer: nil, remix_name: "Original Mix" },
     "Noir & Fraser Owen - &U - Mendo and Danny Serrano Remix" =>
-     { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"], remix_name: "Remix"},
+      { artists: ["Noir", "Fraser Owen"], name: "&U", remixer: ["Mendo", "Danny Serrano"], remix_name: "Remix"},
     "Plastikman - Spastik - Dubfire Rework" =>
-     { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"], remix_name: "Rework" },
+      { artists: ["Plastikman"], name: "Spastik", remixer: ["Dubfire"], remix_name: "Rework" },
     "Alex Under - El Encuentro - Richie Hawtin Edit" =>
-     { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"], remix_name: "Edit" },
+      { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"], remix_name: "Edit" },
     "Gorge - Erotic Soul feat. The Writers Poet - Original Mix" =>
-     { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul", remixer: nil, remix_name: "Original Mix"},
+      { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul", remixer: nil, remix_name: "Original Mix"},
     "John Talabot & Pional - Destiny (Feat. Pional)" =>
-     { artists: ["John Talabot", "Pional"], name: "Destiny", remixer: nil, remix_name: nil},
+      { artists: ["John Talabot", "Pional"], name: "Destiny", remixer: nil, remix_name: nil},
     "Ornette - Crazy - Nôze Remix - Extended Club Version" =>
-     { artists: ["Ornette"], name: "Crazy", remixer: ["Nôze"], remix_name: "Remix Extended Club Version" }
+      { artists: ["Ornette"], name: "Crazy", remixer: ["Nôze"], remix_name: "Remix Extended Club Version" },
+    "2 Guys in Venice & Spiller & Digitalism - Encore - Spiller & 2 Guys In Venice Remix" =>
+      { artists: ["2 Guys in Venice", "Spiller", "Digitalism"], name: "Encore", remixer: ["Spiller", "2 Guys In Venice"], remix_name: "Remix" }
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
