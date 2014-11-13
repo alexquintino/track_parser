@@ -9,7 +9,7 @@ describe TrackParser::Parser do
       { artists: ["Julien Perez", "Octavio Camino"], name: "Parada Maya", remixer: nil, remix_name: nil},
     "Kollektiv Turmstrasse - Ordinary (Lake People's Circle Motive Remix)" =>
       { artists: ["Kollektiv Turmstrasse"], name: "Ordinary", remixer: ["Lake People"], remix_name: "Circle Motive Remix" },
-    "Derek Marin - We've Been Expecting You - Hreno's Deep Pockets Dub" =>
+    "Derek Marin - We've Been Expecting You - Hreno´s Deep Pockets Dub" =>
       { artists: ["Derek Marin"], name: "We've Been Expecting You", remixer: ["Hreno"], remix_name: "Deep Pockets Dub" },
     "Umek & Uto Karem - Crossing the Lines - Original Mix" =>
       { artists: ["Umek", "Uto Karem"], name: "Crossing the Lines", remixer: nil, remix_name: "Original Mix" },

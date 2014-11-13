@@ -17,7 +17,7 @@ module TrackParser
         [NameNode.new(@raw)]
       else
         if has_remix_name?
-          nodes = @raw.split("'s")
+          nodes = @raw.split(/(?:'|´)s/)
           [ArtistsNode.new(nodes[0]), NameNode.new(nodes[1])]
         else
           [ArtistsNode.new(remixer), NameNode.new(remix_version)]
@@ -26,7 +26,7 @@ module TrackParser
     end
 
     def has_remix_name?
-      @raw.include?("'s")
+      @raw.include?("'s") || @raw.include?("´s")
     end
 
     def remixer
