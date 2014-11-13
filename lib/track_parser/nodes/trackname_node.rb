@@ -21,7 +21,7 @@ module TrackParser
     end
 
     def has_featuring?
-      !!/\W(feat\.|featuring)\W/.match(@raw)
+      !!/\W(feat\.|featuring)\W/i.match(@raw)
     end
 
     def remix_expr

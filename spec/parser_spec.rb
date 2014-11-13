@@ -21,7 +21,7 @@ describe TrackParser::Parser do
      { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"], remix_name: "Edit" },
     "Gorge - Erotic Soul feat. The Writers Poet - Original Mix" =>
      { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul", remixer: nil, remix_name: "Original Mix"},
-    "John Talabot & Pional - Destiny feat. Pional" =>
+    "John Talabot & Pional - Destiny (Feat. Pional)" =>
      { artists: ["John Talabot", "Pional"], name: "Destiny", remixer: nil, remix_name: nil},
     "Ornette - Crazy - Nôze Remix - Extended Club Version" =>
      { artists: ["Ornette"], name: "Crazy", remixer: ["Nôze"], remix_name: "Remix Extended Club Version" }

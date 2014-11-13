@@ -11,7 +11,7 @@ module TrackParser
     end
 
     def regexp
-      /\(?(#{FeaturingNode::VERSIONS_REGEXP})\s(?<artist>.*)\)?/i
+      /\(?(#{FeaturingNode::VERSIONS_REGEXP})\s(?<artist>[^\)]*)\)?/i
     end
 
     def children
