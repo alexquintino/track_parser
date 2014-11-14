@@ -5,7 +5,7 @@ module TrackParser
 
     def on_track(node)
       hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
-      hash[:artists] << hash[:featuring] if hash[:featuring] && !hash[:artists].include?(hash[:featuring]) #merge featuring with artists
+      hash[:artists].concat(hash[:featuring]) if hash[:featuring] && !hash[:featuring].all? {|featured| hash[:artists].include?(featured)} #merge featuring with artists
       hash
     end
 
@@ -35,8 +35,8 @@ module TrackParser
     end
 
     def on_featuring(node)
-      artist = process_all(node).first
-      { featuring: artist[:artist] }
+      artists = process_all(node).first
+      { featuring: artists[:artists] }
     end
   end
 end

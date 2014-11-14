@@ -16,7 +16,7 @@ module TrackParser
 
     def children
       artist = regexp.match(@raw)[:artist]
-      [ArtistNode.new(artist)]
+      [ArtistsNode.new(artist)]
     end
   end
 end
