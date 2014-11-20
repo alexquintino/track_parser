@@ -26,7 +26,9 @@ describe TrackParser::Parser do
     "Ornette - Crazy - Nôze Remix - Extended Club Version" =>
       { artists: ["Ornette"], name: "Crazy", remixer: ["Nôze"], remix_name: "Remix Extended Club Version" },
     "2 Guys in Venice & Spiller & Digitalism - Encore - Spiller & 2 Guys In Venice Remix" =>
-      { artists: ["2 Guys in Venice", "Spiller", "Digitalism"], name: "Encore", remixer: ["Spiller", "2 Guys In Venice"], remix_name: "Remix" }
+      { artists: ["2 Guys in Venice", "Spiller", "Digitalism"], name: "Encore", remixer: ["Spiller", "2 Guys In Venice"], remix_name: "Remix" },
+    "Subb-an - Take You Back (ft. Beckford)" =>
+      { artists: ["Subb-an", "Beckford"], name: "Take You Back" }
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }

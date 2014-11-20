@@ -4,7 +4,7 @@ require "ast"
 module TrackParser
   class FeaturingNode < AST::Node
 
-    VERSIONS_REGEXP = ["feat.", "featuring"].join("|")
+    VERSIONS_REGEXP = ["feat.", "featuring", "ft."].join("|")
 
     def initialize(artists)
       super(:featuring, [], {raw: artists})
