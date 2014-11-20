@@ -20,15 +20,15 @@ describe TrackParser::Parser do
     "Alex Under - El Encuentro - Richie Hawtin Edit" =>
       { artists: ['Alex Under'], name: 'El Encuentro', remixer: ["Richie Hawtin"], remix_name: "Edit" },
     "Gorge - Erotic Soul feat. The Writers Poet - Original Mix" =>
-      { artists: ["Gorge", "The Writers Poet"], name: "Erotic Soul", remixer: nil, remix_name: "Original Mix"},
+      { artists: ["Gorge"], name: "Erotic Soul", featuring: ["The Writers Poet"], remixer: nil, remix_name: "Original Mix"},
     "John Talabot & Pional - Destiny (Feat. Pional)" =>
-      { artists: ["John Talabot", "Pional"], name: "Destiny", remixer: nil, remix_name: nil},
+      { artists: ["John Talabot", "Pional"], name: "Destiny", featuring: ["Pional"], remixer: nil, remix_name: nil},
     "Ornette - Crazy - Nôze Remix - Extended Club Version" =>
       { artists: ["Ornette"], name: "Crazy", remixer: ["Nôze"], remix_name: "Remix Extended Club Version" },
     "2 Guys in Venice & Spiller & Digitalism - Encore - Spiller & 2 Guys In Venice Remix" =>
       { artists: ["2 Guys in Venice", "Spiller", "Digitalism"], name: "Encore", remixer: ["Spiller", "2 Guys In Venice"], remix_name: "Remix" },
     "Subb-an - Take You Back (ft. Beckford)" =>
-      { artists: ["Subb-an", "Beckford"], name: "Take You Back" }
+      { artists: ["Subb-an"], name: "Take You Back", featuring: ["Beckford"] }
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
@@ -51,6 +51,10 @@ describe TrackParser::Parser do
 
       it "returns the remix name correctly" do
         expect(parsed_track[:remix_name]).to eq(tracks[track][:remix_name])
+      end
+
+      it "returns the featured artists correctly" do
+        expect(parsed_track[:featuring]).to eq(tracks[track][:featuring])
       end
     end
   end
