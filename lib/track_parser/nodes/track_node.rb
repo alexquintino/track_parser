@@ -8,7 +8,7 @@ module TrackParser
 
     def initialize(track)
       raw = track.gsub("[","(").gsub("]",")")
-      super(:track, [], {raw: track})
+      super(:track, [], {raw: raw})
     end
 
     def children
