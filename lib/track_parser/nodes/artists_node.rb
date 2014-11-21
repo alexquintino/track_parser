@@ -1,11 +1,11 @@
-require_relative "artist_node"
-require "ast"
+require_relative 'artist_node'
+require_relative 'base_node'
 
 module TrackParser
-  class ArtistsNode < AST::Node
+  class ArtistsNode < BaseNode
 
     def initialize(artists)
-      super(:artists, [], {raw: artists})
+      super(:artists, artists)
     end
 
     def children

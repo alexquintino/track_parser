@@ -1,10 +1,10 @@
-require "ast"
+require_relative 'base_node'
 
 module TrackParser
-  class NameNode < AST::Node
+  class NameNode < BaseNode
 
     def initialize(name)
-      super(:name, [], {raw: name})
+      super(:name, name)
     end
 
     def name

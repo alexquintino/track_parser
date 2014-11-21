@@ -1,13 +1,13 @@
-require 'ast'
+require_relative 'base_node'
 require_relative 'name_node'
 require_relative 'remix_node'
 require_relative 'featuring_node'
 
 module TrackParser
-  class TracknameNode < AST::Node
+  class TracknameNode < BaseNode
 
     def initialize(trackname)
-      super(:trackname, [], {raw: trackname})
+      super(:trackname, trackname)
     end
 
     def children

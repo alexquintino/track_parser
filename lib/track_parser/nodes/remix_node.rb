@@ -1,15 +1,15 @@
-require 'ast'
+require_relative 'base_node'
 require_relative 'artists_node'
 require_relative 'name_node'
 
 module TrackParser
-  class RemixNode < AST::Node
+  class RemixNode < BaseNode
 
     VERSIONS_REGEXP = ["remix", "mix", "vocal", "dub", "rework", "edit", "version", "extended", "club"].join("|")
 
     def initialize(remix)
       raw = remix.gsub(/(\(|\))/, "") # remove parantheses
-      super(:remix, [], {raw: raw})
+      super(:remix, raw)
     end
 
     def children
