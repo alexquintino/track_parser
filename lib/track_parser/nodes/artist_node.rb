@@ -1,12 +1,14 @@
-require "ast"
+require_relative 'base_node'
 
-class ArtistNode < AST::Node
+module TrackParser
+  class ArtistNode < BaseNode
 
-  def initialize(raw)
-    super(:artist, [], {raw: raw})
-  end
+    def initialize(raw)
+      super(:artist, raw)
+    end
 
-  def name
-    @raw.strip
+    def name
+      @raw.strip
+    end
   end
 end

@@ -28,7 +28,9 @@ describe TrackParser::Parser do
     "2 Guys in Venice & Spiller & Digitalism - Encore - Spiller & 2 Guys In Venice Remix" =>
       { artists: ["2 Guys in Venice", "Spiller", "Digitalism"], name: "Encore", remixer: ["Spiller", "2 Guys In Venice"], remix_name: "Remix" },
     "Subb-an - Take You Back (ft. Beckford)" =>
-      { artists: ["Subb-an"], name: "Take You Back", featuring: ["Beckford"] }
+      { artists: ["Subb-an"], name: "Take You Back", featuring: ["Beckford"] },
+    "Aki Bergen & Pezzner & Terry Grant - Tarareando - Vocal Mix" =>
+      { artists: ["Aki Bergen", "Pezzner", "Terry Grant"], name: "Tarareando", remixer: nil, remix_name: "Vocal Mix" }
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }

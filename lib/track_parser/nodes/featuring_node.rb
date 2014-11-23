@@ -1,13 +1,13 @@
-require_relative "artist_node"
-require "ast"
+require_relative 'artist_node'
+require_relative 'base_node'
 
 module TrackParser
-  class FeaturingNode < AST::Node
+  class FeaturingNode < BaseNode
 
     VERSIONS_REGEXP = ["feat.", "featuring", "ft."].join("|")
 
     def initialize(artists)
-      super(:featuring, [], {raw: artists})
+      super(:featuring, artists)
     end
 
     def regexp
