@@ -30,7 +30,9 @@ describe TrackParser::Parser do
     "Subb-an - Take You Back (ft. Beckford)" =>
       { artists: ["Subb-an"], name: "Take You Back", featuring: ["Beckford"] },
     "Aki Bergen & Pezzner & Terry Grant - Tarareando - Vocal Mix" =>
-      { artists: ["Aki Bergen", "Pezzner", "Terry Grant"], name: "Tarareando", remixer: nil, remix_name: "Vocal Mix" }
+      { artists: ["Aki Bergen", "Pezzner", "Terry Grant"], name: "Tarareando", remixer: nil, remix_name: "Vocal Mix" },
+    "Jay Haze & Laila Tov - I Wait For You - Original" =>
+      { artists: ["Jay Haze", "Laila Tov"], name: "I Wait For You", remixer: nil, remix_name: "Original"}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }

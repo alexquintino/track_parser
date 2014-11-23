@@ -5,7 +5,7 @@ require_relative 'name_node'
 module TrackParser
   class RemixNode < BaseNode
 
-    VERSIONS_REGEXP = ["remix", "mix", "vocal", "dub", "rework", "edit", "version", "extended", "club"].join("|")
+    VERSIONS_REGEXP = ["remix", "mix", "vocal", "dub", "rework", "edit", "version", "extended", "club", "original"].join("|")
 
     def initialize(remix)
       raw = remix.gsub(/(\(|\))/, "") # remove parantheses
@@ -13,15 +13,11 @@ module TrackParser
     end
 
     def children
-      if original_mix?
-        [NameNode.new(@raw)]
+      if has_remix_name?
+        nodes = @raw.split(/(?:'|´)s/)
+        [ArtistsNode.new(nodes[0]), NameNode.new(nodes[1])]
       else
-        if has_remix_name?
-          nodes = @raw.split(/(?:'|´)s/)
-          [ArtistsNode.new(nodes[0]), NameNode.new(nodes[1])]
-        else
-          [ArtistsNode.new(remixer), NameNode.new(remix_version)]
-        end
+        [ArtistsNode.new(remixer), NameNode.new(remix_version)]
       end
     end
 
@@ -39,10 +35,6 @@ module TrackParser
 
     def without_version(part = @raw)
       part.gsub(remix_version, "")
-    end
-
-    def original_mix?(remix = @raw)
-      !!/original\s(#{VERSIONS_REGEXP})/i.match(remix)
     end
   end
 end
