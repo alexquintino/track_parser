@@ -37,5 +37,9 @@ module TrackParser
       artists = process_all(node).first
       { featuring: artists[:artists] }
     end
+
+    def on_empty(node)
+      {}
+    end
   end
 end
