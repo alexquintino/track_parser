@@ -5,7 +5,7 @@ module TrackParser
   class BaseNode < AST::Node
 
     def self.new(text)
-      return EmptyNode.new if text.strip.empty?
+      return EmptyNode.new if text.nil? || text.strip.empty?
       super(text)
     end
 
