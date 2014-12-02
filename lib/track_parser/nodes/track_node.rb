@@ -12,16 +12,18 @@ module TrackParser
     end
 
     def children
-      track_parts = @raw.split(" - ").map(&:strip)
-      case track_parts.size
+      track_sections = @raw.split(" - ").map(&:strip)
+      case track_sections.size
       when 1
         raise UnparseableTrack.new("Don't know how to parse a track without \"-\". Track was:#{@raw}")
       when 2
-        [ArtistsNode.new(track_parts[0]), TracknameNode.new(track_parts[1])]
-      when 3
-        [ArtistsNode.new(track_parts[0]), TracknameNode.new(track_parts[1]), RemixNode.new(track_parts[2])]
+        [ArtistsNode.new(track_sections[0]), TracknameNode.new(track_sections[1])]
       else
-        [ArtistsNode.new(track_parts[0]), TracknameNode.new(track_parts[1]), RemixNode.new(track_parts[2..-1].join(" "))]
+        nodes = track_sections[2..-1].map do |track_section|
+          parts, remaining_text = FilterPipeline.filter(track_section)
+          FilterNodesMapping.to_nodes(parts)
+        end
+        [ArtistsNode.new(track_sections[0]), TracknameNode.new(track_sections[1])] + nodes.flatten
       end
     end
   end

@@ -32,7 +32,9 @@ describe TrackParser::Parser do
     "Aki Bergen & Pezzner & Terry Grant - Tarareando - Vocal Mix" =>
       { artists: ["Aki Bergen", "Pezzner", "Terry Grant"], name: "Tarareando", remixer: nil, remix_name: "Vocal Mix" },
     "Jay Haze & Laila Tov - I Wait For You - Original" =>
-      { artists: ["Jay Haze", "Laila Tov"], name: "I Wait For You", remixer: nil, remix_name: "Original"}
+      { artists: ["Jay Haze", "Laila Tov"], name: "I Wait For You", remixer: nil, remix_name: "Original"},
+    "DJ T. - City Life - feat. Cari Golden [Maceo Plex Remix]" =>
+      { artists: ["DJ T."], name: "City Life", remixer: ["Maceo Plex"], remix_name: "Remix", featuring: ["Cari Golden"]}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }

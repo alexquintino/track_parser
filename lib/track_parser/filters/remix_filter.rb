@@ -13,7 +13,7 @@ module TrackParser
 
     def filter
       if has_remix?
-        extracted = parentheses_content.select {|match| !remix_expr.match(match).nil?}.first #select first that matches a remix
+        extracted = content.select {|match| !regexp.match(match).nil?}.first #select first that matches a remix
         @data.add_part(:remix, extracted)
         @data.remove_text "(#{extracted})" #remove remix string from
       end
@@ -21,14 +21,19 @@ module TrackParser
     end
 
     def has_remix?
-      !!/\(.*(#{RemixNode::VERSIONS_REGEXP})+\)/i.match(@data.text) #find remix keywords
+      !!regexp #find remix keywords
     end
 
-    def parentheses_content
-      @data.text.scan(/\((?<content>.*?)\)/).flatten
+    def content
+      text = @data.text
+      if text =~ /(\(|\))+/
+        text.scan(/\((?<content>.*?)\)/).flatten
+      else
+        [text]
+      end
     end
 
-    def remix_expr
+    def regexp
       /(?<remix>.*?\b(#{RemixNode::VERSIONS_REGEXP})+)\b/i
     end
 
