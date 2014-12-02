@@ -1,27 +1,32 @@
 require "ast"
+require_relative "track"
 
 module TrackParser
   class Processor < AST::Processor
 
+    def initialize
+      @track = Track.new
+    end
+
     def on_track(node)
       hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
-      hash
+      @track.add_artists(hash[:artists])
+      @track
     end
 
     def on_trackname(node)
       hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
-      hash[:track_name] = hash[:name]
-      hash.delete(:name)
-      hash
+      @track.add_name(hash[:name])
+      {}
     end
 
     def on_artists(node)
       artists = process_all(node)
-      { artists: artists.map {|hash| hash[:artist]} }
+      { artists: artists }
     end
 
     def on_artist(node)
-      { artist: node.name }
+      node.name
     end
 
     def on_name(node)
@@ -30,12 +35,15 @@ module TrackParser
 
     def on_remix(node)
       hash = process_all(node).reduce({}) { |mem, h| mem.merge(h) }
-      { remixer: hash[:artists], remix_name: hash[:name] }
+      @track.add_remixer(hash[:artists])
+      @track.add_remix_name(hash[:name])
+      {}
     end
 
     def on_featuring(node)
       artists = process_all(node).first
-      { featuring: artists[:artists] }
+      @track.add_featuring(artists[:artists])
+      {}
     end
 
     def on_empty(node)

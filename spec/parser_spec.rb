@@ -42,23 +42,23 @@ describe TrackParser::Parser do
       let(:track) { track }
 
       it "returns the artist correctly" do
-        expect(parsed_track[:artists]).to eq(tracks[track][:artists])
+        expect(parsed_track.artists).to eq(tracks[track][:artists])
       end
 
       it "returns the track name correctly" do
-        expect(parsed_track[:track_name]).to eq(tracks[track][:name])
+        expect(parsed_track.name).to eq(tracks[track][:name])
       end
 
       it "returns the remixer correctly" do
-        expect(parsed_track[:remixer]).to eq(tracks[track][:remixer])
+        expect(parsed_track.remixer).to eq(tracks[track][:remixer])
       end
 
       it "returns the remix name correctly" do
-        expect(parsed_track[:remix_name]).to eq(tracks[track][:remix_name])
+        expect(parsed_track.remix_name).to eq(tracks[track][:remix_name])
       end
 
       it "returns the featured artists correctly" do
-        expect(parsed_track[:featuring]).to eq(tracks[track][:featuring])
+        expect(parsed_track.featuring).to eq(tracks[track][:featuring])
       end
     end
   end
