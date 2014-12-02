@@ -1,26 +1,25 @@
 module TrackParser
   class FeaturingFilter
 
-    def self.filter(text)
-      self.new(text).filter
+    def self.filter(data)
+      self.new(data).filter
     end
 
-    def initialize(text)
-      @text = text
+    def initialize(data)
+      @data = data
     end
 
     def filter
       if has_featuring?
-        featuring_text = featuring_expr.match(@text)[:featuring]
-        remaining = @text.gsub(featuring_text, "").gsub("(","").gsub(")","") #remove featuring artists from trackname plus any lingering parentheses
-        return featuring_text, remaining
-      else
-        return nil, @text
+        featuring_text = featuring_expr.match(@data.text)[:featuring]
+        @data.add_section(:featuring, featuring_text)
+        @data.remove_text(featuring_text) #remove featuring artists from trackname
       end
+      return @data
     end
 
     def has_featuring?
-      !!/\W(#{FeaturingNode::VERSIONS_REGEXP})\W/i.match(@text)
+      !!/\W(#{FeaturingNode::VERSIONS_REGEXP})\W/i.match(@data.text)
     end
 
     def featuring_expr

@@ -3,30 +3,29 @@ require_relative "nodes/remix_node"
 module TrackParser
   class RemixFilter
 
-    def self.filter(text)
-      self.new(text).filter
+    def self.filter(data)
+      self.new(data).filter
     end
 
-    def initialize(text)
-      @text = text
+    def initialize(data)
+      @data = data
     end
 
     def filter
       if has_remix?
         extracted = parentheses_content.select {|match| !remix_expr.match(match).nil?}.first #select first that matches a remix
-        remaining = @text.gsub("(#{extracted})", "") #remove remix string from
-        return extracted, remaining
-      else
-        return nil, @text
+        @data.add_section(:remix, extracted)
+        @data.remove_text "(#{extracted})" #remove remix string from
       end
+      return @data
     end
 
     def has_remix?
-      !!/\(.*(#{RemixNode::VERSIONS_REGEXP})+\)/i.match(@text) #find remix keywords
+      !!/\(.*(#{RemixNode::VERSIONS_REGEXP})+\)/i.match(@data.text) #find remix keywords
     end
 
     def parentheses_content
-      @text.scan(/\((?<content>.*?)\)/).flatten
+      @data.text.scan(/\((?<content>.*?)\)/).flatten
     end
 
     def remix_expr
