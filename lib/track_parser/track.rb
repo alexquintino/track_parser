@@ -16,11 +16,16 @@ module TrackParser
     end
 
     def add_remixer(remixer)
-      @remixer = remixer
+      @remixer = remixer unless remixer.nil?
     end
 
     def add_remix_name(remix_name)
-      @remix_name = remix_name
+      return if remix_name.nil?
+      if @remix_name.nil?
+        @remix_name = remix_name
+      else
+        @remix_name += " " + remix_name
+      end
     end
 
     def add_name(name)
