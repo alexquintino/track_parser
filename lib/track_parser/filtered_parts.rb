@@ -1,25 +1,25 @@
 module TrackParser
-  class FilteredSections
+  class FilteredParts
 
     def initialize(text)
       @remaining = text
-      @sections = []
+      @parts = []
     end
 
     def text
       @remaining
     end
 
-    def add_section(type, text)
-      @sections << {type: type, text: text}
+    def add_part(type, text)
+      @parts << {type: type, text: text}
     end
 
     def remove_text(text)
       @remaining = @remaining.gsub(text, "")
     end
 
-    def sections
-      @sections
+    def parts
+      @parts
     end
   end
 end

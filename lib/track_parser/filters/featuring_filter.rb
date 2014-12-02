@@ -12,7 +12,7 @@ module TrackParser
     def filter
       if has_featuring?
         featuring_text = featuring_expr.match(@data.text)[:featuring]
-        @data.add_section(:featuring, featuring_text)
+        @data.add_part(:featuring, featuring_text)
         @data.remove_text(featuring_text) #remove featuring artists from trackname
       end
       return @data

@@ -3,7 +3,7 @@ require_relative 'name_node'
 require_relative 'remix_node'
 require_relative 'featuring_node'
 require_relative '../filter_pipeline'
-require_relative '../filter_nodes_mapping'
+require_relative '../filters/filter_nodes_mapping'
 
 module TrackParser
   class TracknameNode < BaseNode
@@ -13,8 +13,8 @@ module TrackParser
     end
 
     def children
-      sections, remaining_text = FilterPipeline.filter(@raw)
-      [NameNode.new(remaining_text)] + FilterNodesMapping.to_nodes(sections)
+      parts, remaining_text = FilterPipeline.filter(@raw)
+      [NameNode.new(remaining_text)] + FilterNodesMapping.to_nodes(parts)
     end
   end
 end

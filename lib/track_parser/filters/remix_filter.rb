@@ -1,4 +1,4 @@
-require_relative "nodes/remix_node"
+require_relative "../nodes/remix_node"
 
 module TrackParser
   class RemixFilter
@@ -14,7 +14,7 @@ module TrackParser
     def filter
       if has_remix?
         extracted = parentheses_content.select {|match| !remix_expr.match(match).nil?}.first #select first that matches a remix
-        @data.add_section(:remix, extracted)
+        @data.add_part(:remix, extracted)
         @data.remove_text "(#{extracted})" #remove remix string from
       end
       return @data
