@@ -20,7 +20,7 @@ module TrackParser
         [ArtistsNode.new(track_sections[0]), TracknameNode.new(track_sections[1])]
       else
         nodes = track_sections[2..-1].map do |track_section|
-          parts, remaining_text = FilterPipeline.filter(track_section)
+          parts = FilterPipeline.filter(track_section).first
           FilterNodesMapping.to_nodes(parts)
         end
         [ArtistsNode.new(track_sections[0]), TracknameNode.new(track_sections[1])] + nodes.flatten

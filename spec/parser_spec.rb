@@ -34,7 +34,9 @@ describe TrackParser::Parser do
     "Jay Haze & Laila Tov - I Wait For You - Original" =>
       { artists: ["Jay Haze", "Laila Tov"], name: "I Wait For You", remixer: nil, remix_name: "Original"},
     "DJ T. - City Life - feat. Cari Golden [Maceo Plex Remix]" =>
-      { artists: ["DJ T."], name: "City Life", remixer: ["Maceo Plex"], remix_name: "Remix", featuring: ["Cari Golden"]}
+      { artists: ["DJ T."], name: "City Life", remixer: ["Maceo Plex"], remix_name: "Remix", featuring: ["Cari Golden"]},
+    "Fritz Kalkbrenner - Right in the Dark - Henrik Schwarz Remix - Chopstick & Johnjon Edit" =>
+      { artists: ["Fritz Kalkbrenner"], name: "Right in the Dark", remixer: ["Henrik Schwarz", "Chopstick", "Johnjon"], remix_name: "Remix Edit"}
   }
 
   let(:parsed_track) { TrackParser::Parser.do(track) }
