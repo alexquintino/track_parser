@@ -9,10 +9,14 @@ module TrackParser
     end
 
     def children
-      if multiple?
-        @raw.split(regex).map { |capture| ArtistNode.new(capture) }
+      if @raw.is_a? String
+        if multiple?
+          @raw.split(regex).map { |capture| ArtistNode.new(capture) }
+        else
+          [ArtistNode.new(@raw)]
+        end
       else
-        [ArtistNode.new(@raw)]
+        @raw.map { |artist| ArtistNode.new(artist) }
       end
     end
 

@@ -41,5 +41,9 @@ module TrackParser
       @featuring = featured_artists
     end
 
+    def to_s
+      "artists='#{@artists}' name='#{@name}' remixer='#{@remixer}' remix_name='#{@remix_name}' featuring='#{featuring}'"
+    end
+
   end
 end

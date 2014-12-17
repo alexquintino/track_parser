@@ -7,12 +7,11 @@ module TrackParser
   class TrackNode < BaseNode
 
     def initialize(track)
-      raw = track.gsub("[","(").gsub("]",")")
+      raw = replace_parentheses(track)
       super(:track, raw)
     end
 
     def children
-      track_sections = @raw.split(" - ").map(&:strip)
       if track_sections.size == 1
         raise UnparseableTrack.new("Don't know how to parse a track without \"-\". Track was:#{@raw}")
       else
@@ -22,6 +21,27 @@ module TrackParser
         end
         [ArtistsNode.new(track_sections[0]), TracknameNode.new(track_sections[1])] + nodes.flatten
       end
+    end
+
+    def replace_parentheses(text)
+      if text.is_a? String
+        text.gsub("[","(").gsub("]",")")
+      else
+        text[:name] = replace_parentheses(text[:name])
+        text
+      end
+    end
+
+    def track_sections
+      if @raw.is_a? String
+        split_sections(@raw)
+      else
+        [@raw[:artists]] + split_sections(@raw[:name])
+      end
+    end
+
+    def split_sections(text)
+      text.split(" - ").map(&:strip)
     end
   end
 

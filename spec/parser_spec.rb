@@ -39,6 +39,11 @@ describe TrackParser::Parser do
       { artists: ["Fritz Kalkbrenner"], name: "Right in the Dark", remixer: ["Henrik Schwarz", "Chopstick", "Johnjon"], remix_name: "Remix Edit"}
   }
 
+  tracks_structured = [
+    {track: { artists: ["Sailor & I"], name: "Tough Love - Aril Brikha Remix" }, result:
+      { artists: ["Sailor & I"], name: "Tough Love", remixer: ["Aril Brikha"], remix_name: "Remix"}}
+  ]
+
   let(:parsed_track) { TrackParser::Parser.do(track) }
 
   tracks.keys.each do |track|
@@ -72,6 +77,19 @@ describe TrackParser::Parser do
 
     it "throws an exception when the track doesn't have \"-\"" do
       expect{TrackParser::Parser.do(track)}.to raise_error(TrackParser::UnparseableTrack)
+    end
+  end
+
+  context "Hash as input" do
+    let(:track) { tracks_structured.first[:track] }
+    let(:result) { tracks_structured.first[:result]}
+
+    it "returns all the correct info" do
+      expect(parsed_track.artists).to eq(result[:artists])
+      expect(parsed_track.name).to eq(result[:name])
+      expect(parsed_track.remixer).to eq(result[:remixer])
+      expect(parsed_track.remix_name).to eq(result[:remix_name])
+      expect(parsed_track.featuring).to eq(result[:featuring])
     end
   end
 
