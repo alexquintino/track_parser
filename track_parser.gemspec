@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = TrackParser::VERSION
   spec.authors       = ["Alexandre Quintino"]
   spec.email         = ["amsquintino@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Tries to parse the name of a track (eg. ArtistA - ABC (ArtistB remix)) and extract metadata from it (eg. artists = ArtistA, track-name = ABC, remixer = ArtistB)}
+  spec.description   = %q{Tries to parse the name of a track (eg. ArtistA - ABC (ArtistB remix)) and extract metadata from it (eg. artists = ArtistA, track-name = ABC, remixer = ArtistB)}
   spec.homepage      = ""
   spec.license       = "MIT"
 
